@@ -758,11 +758,6 @@ require('lazy').setup({
           },
         },
         groovyls = {
-          cmd = {
-            'java',
-            'jar',
-            '~/.local/share/kickstart.nvim/mason/packages/groovy-language-server/build/libs/groovy-language-server-all.jar',
-          },
           capabilities = capabilities,
         },
       }
@@ -978,6 +973,39 @@ require('lazy').setup({
     'ThePrimeagen/harpoon',
     branch = 'harpoon2',
     requires = { { 'nvim-lua/plenary.nvim' } },
+    config = function()
+      local harpoon = require 'harpoon'
+
+      harpoon:setup()
+
+      vim.keymap.set('n', '<leader>a', function()
+        harpoon:list():add()
+      end, { desc = '[a]nchor buffer' })
+      vim.keymap.set('n', '<C-e>', function()
+        harpoon.ui:toggle_quick_menu(harpoon:list())
+      end)
+
+      vim.keymap.set('n', '<M-h>', function()
+        harpoon:list():select(1)
+      end)
+      vim.keymap.set('n', '<M-j>', function()
+        harpoon:list():select(2)
+      end)
+      vim.keymap.set('n', '<M-k>', function()
+        harpoon:list():select(3)
+      end)
+      vim.keymap.set('n', '<M-l>', function()
+        harpoon:list():select(4)
+      end)
+
+      -- Toggle previous & next buffers stored within Harpoon list
+      vim.keymap.set('n', '<M-J>', function()
+        harpoon:list():prev()
+      end)
+      vim.keymap.set('n', '<M-K>', function()
+        harpoon:list():next()
+      end)
+    end,
   },
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
