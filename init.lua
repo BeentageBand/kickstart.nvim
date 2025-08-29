@@ -759,6 +759,17 @@ require('lazy').setup({
         },
         groovyls = {
           capabilities = capabilities,
+          settings = {
+            groovy = {
+              home = os.getenv 'JAVA_HOME',
+              classpath = {
+                '~/.gradle/caches/modules-2/files-2.1/',
+                '~/workspace/jenkins/DevOpsAsCode/build/classes/groovy/main/',
+                '~/workspace/jenkins/DevOpsAsCode/build/classes/groovy/test/',
+                '~/workspace/jenkins/DevOpsAsCode/build/classes/java/',
+              },
+            },
+          },
         },
       }
 
