@@ -104,10 +104,10 @@ vim.o.number = true
 --  Experiment for yourself to see if you like it!
 vim.o.relativenumber = true
 
--- Tabs and indentation
-vim.o.shiftwidth = 4
+-- Tabs handling and identation (just spaces)
 vim.o.tabstop = 4
 vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
 vim.o.expandtab = true
 vim.o.smartindent = true
 
@@ -1015,6 +1015,9 @@ require('lazy').setup({
       vim.keymap.set('n', '<M-l>', function()
         harpoon:list():select(4)
       end)
+      vim.keymap.set('n', '<M-;>', function()
+        harpoon:list():select(5)
+      end)
 
       -- Toggle previous & next buffers stored within Harpoon list
       vim.keymap.set('n', '<M-J>', function()
@@ -1071,7 +1074,20 @@ require('lazy').setup({
     main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
+      ensure_installed = {
+        'bash',
+        'c',
+        'diff',
+        'html',
+        'lua',
+        'luadoc',
+        'markdown',
+        'markdown_inline',
+        'query',
+        'vim',
+        'vimdoc',
+        'yaml',
+      },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
