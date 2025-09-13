@@ -765,15 +765,17 @@ require('lazy').setup({
           },
         },
         groovyls = {
+          cmd = {
+            '/usr/bin/java',
+            '-Dlog.level=FINE',
+            '-jar',
+            vim.fn.stdpath 'data' .. '/mason/packages/groovyls/groovyls-all.jar',
+          },
           capabilities = capabilities,
           settings = {
             groovy = {
-              home = os.getenv 'JAVA_HOME',
               classpath = {
-                '~/.gradle/caches/modules-2/files-2.1/',
-                '~/workspace/jenkins/DevOpsAsCode/build/classes/groovy/main/',
-                '~/workspace/jenkins/DevOpsAsCode/build/classes/groovy/test/',
-                '~/workspace/jenkins/DevOpsAsCode/build/classes/java/',
+                '/usr/share/groovy/lib/groovy-json.jar',
               },
             },
           },
@@ -1079,6 +1081,7 @@ require('lazy').setup({
         'c',
         'diff',
         'html',
+        'json',
         'lua',
         'luadoc',
         'markdown',
