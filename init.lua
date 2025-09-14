@@ -367,6 +367,7 @@ require('lazy').setup({
         { '<leader>t', group = '[T]oggle' },
         { '<leader>p', group = '[P]roject' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        { '<leader>g', group = '[G]it' },
       },
     },
   },
@@ -1109,7 +1110,22 @@ require('lazy').setup({
     --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   },
-  { 'tpope/vim-fugitive' },
+  {
+    'tpope/vim-fugitive',
+    config = function()
+      vim.keymap.set('n', '<leader>gs', vim.cmd.Git, { desc = '[s]tatus' })
+      vim.keymap.set('n', '<leader>gp', '<cmd>Git pra<CR>', { desc = '[p]ull' })
+      vim.keymap.set('n', '<leader>gu', '<cmd>Git sur<CR>', { desc = 'submodule [u]pdate' })
+      vim.keymap.set('n', '<leader>gt', '<cmd>Git stu<CR>', { desc = 's[t]ash' })
+      vim.keymap.set('n', '<leader>go', '<cmd>Git stp<CR>', { desc = 'stash p[o]p' })
+      vim.keymap.set('n', '<leader>gb', '<cmd>Git blame<CR>', { desc = 'blame' })
+      vim.keymap.set('n', '<leader>gd', '<cmd>Gdiff<CR>', { desc = 'diff' })
+      vim.keymap.set('n', '<leader>gl', '<cmd>Git log --oneline<CR>', { desc = 'log --oneline' })
+      vim.keymap.set('n', '<leader>gg', '<cmd>diffget //2<CR>', { desc = 'diffget left' })
+      vim.keymap.set('n', '<leader>gh', '<cmd>diffget //3<CR>', { desc = 'diffget right' })
+      vim.keymap.set('n', '<leader>gp', '<cmd>diffput //1<CR>', { desc = 'diffput' })
+    end,
+  },
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
   -- place them in the correct locations.
