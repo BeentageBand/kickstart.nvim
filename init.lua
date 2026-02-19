@@ -726,6 +726,15 @@ require('lazy').setup({
             },
           },
         },
+        yamlls = {
+          settings = {
+            yaml = {
+              schemas = {
+                ['~/.local/share/dab-schema.json'] = '*.yml',
+              },
+            },
+          },
+        },
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
@@ -1170,6 +1179,15 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>gh', '<cmd>diffget //3<CR>', { desc = 'diffget right' })
       vim.keymap.set('n', '<leader>gp', '<cmd>diffput //1<CR>', { desc = 'diffput' })
     end,
+  },
+  {
+    'awslabs/amazonq.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    opts = {
+      sso = {
+        start_url = 'https://twdc-qdeveloper.awsapps.com/start/#/saml/default/Q-Kiro-DefaultProfile/ins-a2af41de96c4efef', -- Add your SSO start URL here
+      },
+    },
   },
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
