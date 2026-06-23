@@ -434,12 +434,12 @@ require('lazy').setup({
         pickers = {
           live_grep = {
             additional_args = function(_)
-              return { '--hidden', '--glob=!.git/' }
+              return { '--hidden', '--glob=!.git/', '--glob=!dot-password-store' }
             end,
           },
           find_files = {
             hidden = true,
-            find_command = { 'rg', '--files', '--hidden', '--glob=!.git/' },
+            find_command = { 'rg', '--files', '--hidden', '--glob=!.git/', '--glob=!dot-password-store' },
           },
         },
         extensions = {
