@@ -238,6 +238,15 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Treat Google Apps Script files as JavaScript (gets ts_ls + JS treesitter/
+-- formatting for free). Neovim's builtin default for `*.gs` is `grads`
+-- (the GrADS scripting language), which we don't use.
+vim.filetype.add {
+  extension = {
+    gs = 'javascript',
+  },
+}
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -709,7 +718,8 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        -- ts_ls = {},
+        -- Also covers Google Apps Script (`*.gs`, mapped to `javascript` filetype earlier in this file).
+        ts_ls = {},
         --
         gopls = {
           settings = {
